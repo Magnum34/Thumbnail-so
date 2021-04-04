@@ -198,11 +198,9 @@ class ThumbnailSo {
             throw new ThumbnailSoException('Invalid driver name');
         }
 
-
         $driver = RegisterDriver::get($driver);
 
         $driver->afterSave($this->getTmpDir(), $destination_dir, $destination_name, $extension);
-
         imagedestroy($dest_image);
 
         return $this;
@@ -254,7 +252,11 @@ class ThumbnailSo {
         return $this->quality;
     }
 
-
+    /**
+     * Gets source type image
+     *
+     * @return integer
+     */
     public function getSourceType(){
         return $this->source_type;
     }

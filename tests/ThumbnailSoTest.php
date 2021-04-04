@@ -86,7 +86,22 @@ class ThumbnailSoTest extends TestCase {
 
     }
 
+    public function testSaveLocalJPEGSuccess(){
+        $image = $this->createImage(600, 400, 'jpeg');
+        $thumbnail = new ThumbnailSo($image);
+        $thumbnail->resizeToMaxSide(150);
+        $temp_dir = sys_get_temp_dir();
+        $thumbnail->save('local', $temp_dir , 'example');
+        $this->assertEquals(IMAGETYPE_JPEG, exif_imagetype($temp_dir .'/example.jpeg'));
+    }
 
-
+    public function testSaveLocalPNGSuccess(){
+        $image = $this->createImage(600, 400, 'png');
+        $thumbnail = new ThumbnailSo($image);
+        $thumbnail->resizeToMaxSide(150);
+        $temp_dir = sys_get_temp_dir();
+        $thumbnail->save('local', $temp_dir , 'example');
+        $this->assertEquals(IMAGETYPE_PNG, exif_imagetype($temp_dir .'/example.png'));
+    }
     
 }

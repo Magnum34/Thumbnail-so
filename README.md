@@ -1,4 +1,4 @@
-# Thumbnail-so
+# Thumbnail So
 
 [![Build Status](https://travis-ci.com/Magnum34/Thumbnail-so.svg?branch=main)](https://travis-ci.com/Magnum34/Thumbnail-so)
 [![codecov](https://codecov.io/gh/Magnum34/Thumbnail-so/branch/main/graph/badge.svg?token=uNydmJRFvB)](https://codecov.io/gh/Magnum34/Thumbnail-so)
