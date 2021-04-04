@@ -11,6 +11,7 @@ $dotenv->load();
 use ThumbnailSo\ThumbnailSo;
 
 
+
 $img = new ThumbnailSo('./new.png');
 $img->resizeToMaxSide(150);
 $img->save('s3', 'tests', 'cat');

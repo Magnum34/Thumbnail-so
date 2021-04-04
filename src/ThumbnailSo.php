@@ -252,6 +252,11 @@ class ThumbnailSo {
         return $this->quality;
     }
 
+
+    public function getSourceType(){
+        return $this->source_type;
+    }
+
     /**
      * Gets temporary dir 
      *
