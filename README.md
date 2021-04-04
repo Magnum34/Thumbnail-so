@@ -1,11 +1,8 @@
 # Thumbnail-so
 
 ![Build Status](https://travis-ci.com/Magnum34/Thumbnail-so.svg?branch=main)
-
-[![codecov](https://codecov.io/gh/Magnum34/Thumbnail-so/branch/main/graph/badge.svg?token=uNydmJRFvB)](https://codecov.io/gh/Magnum34/Thumbnail-so)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+![codecov](https://codecov.io/gh/Magnum34/Thumbnail-so/branch/main/graph/badge.svg?token=uNydmJRFvB)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 
 Thumbnail So is a PHP image manipulation library  for resize to max side for jpeg and png.
