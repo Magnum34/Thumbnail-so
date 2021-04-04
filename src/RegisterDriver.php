@@ -2,8 +2,8 @@
 
 namespace ThumbnailSo;
 
-use ThumbnailSo\Exceptions\ThumbnailSoException;
-use ThumbnailSo\DriverManagerInterface;
+use \ThumbnailSo\Exceptions\ThumbnailSoException;
+use \ThumbnailSo\DriverManagerInterface;
 
 class RegisterDriver {
 

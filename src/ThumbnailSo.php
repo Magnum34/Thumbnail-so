@@ -2,10 +2,10 @@
 
 namespace ThumbnailSo;
 
-use ThumbnailSo\Drivers\AWSDriver;
-use ThumbnailSo\Exceptions\ThumbnailSoException;
-use ThumbnailSo\RegisterDriver;
-use ThumbnailSo\Drivers\LocalDriver;
+use \ThumbnailSo\Drivers\AWSDriver;
+use \ThumbnailSo\Exceptions\ThumbnailSoException;
+use \ThumbnailSo\RegisterDriver;
+use \ThumbnailSo\Drivers\LocalDriver;
 
 class ThumbnailSo {
 

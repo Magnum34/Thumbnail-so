@@ -2,7 +2,7 @@
 
 namespace ThumbnailSo;
 
-use ThumbnailSo\RegisterDriver;
+use \ThumbnailSo\RegisterDriver;
 
 interface  DriverManagerInterface {
 

@@ -2,7 +2,7 @@
 
 namespace ThumbnailSo\Drivers;
 
-use ThumbnailSo\DriverManagerInterface;
+use \ThumbnailSo\DriverManagerInterface;
 
 class LocalDriver implements DriverManagerInterface {
 
