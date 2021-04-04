@@ -57,11 +57,13 @@ class ThumbnailSo {
         }
     }
 
-
+    /**
+     * Initial Drivers
+     *
+     * @return void
+     */
     private function initDrivers(){
-
         $this->drivers = RegisterDriver::allKeys();
-
     }
 
     /**
@@ -102,9 +104,7 @@ class ThumbnailSo {
 
         $this->destination_width = $width;
         $this->destination_height = $height;
-
         return $this;
-
     }
 
     /**

@@ -29,6 +29,7 @@ interface  DriverManagerInterface {
      */
     public function getConfig();
 
+
     /**
      * Record rule for the driver
      *
