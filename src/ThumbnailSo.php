@@ -55,6 +55,8 @@ class ThumbnailSo {
             default:
                 throw new ThumbnailSoException('Unsupported image type');
         }
+
+        $this->resize($this->source_width, $this->source_height);
     }
 
     /**

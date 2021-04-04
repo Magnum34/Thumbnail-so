@@ -28,8 +28,18 @@ class ThumbnailSoTest extends TestCase {
         return $filename;
     }
 
+
+    public function ResizeToMaxSideDataProvider(){
+        return [
+            [[600, 400], [150, 100]],
+            [[400, 400], [150, 150]],
+            [[150, 150], [150, 150]],
+            [[100, 50], [100, 50]]
+        ];
+    }
+
     /**
-    * @expectedException ThumbnailSo\Exceptions\ThumbnailSoException
+    * @expectedException \ThumbnailSo\Exceptions\ThumbnailSoException
     * @expectedExceptionMessage File does not exist
     */
     public function testLoadNoFile(){
@@ -49,4 +59,34 @@ class ThumbnailSoTest extends TestCase {
 
         $this->assertEquals(IMAGETYPE_PNG, $thumbnail->getSourceType());
     }
+
+    /**
+     * @dataProvider ResizeToMaxSideDataProvider
+     */
+    public function testResizeToMaxSidePNGSuccess(array $source , array $target){
+        $image = $this->createImage($source[0], $source[1], 'png');
+        $thumbnail = new ThumbnailSo($image);
+        $thumbnail->resizeToMaxSide(150);
+
+        $this->assertEquals($target[0], $thumbnail->getDestinationWidth());
+        $this->assertEquals($target[1], $thumbnail->getDestinationHeight());
+
+    }
+
+    /**
+     * @dataProvider ResizeToMaxSideDataProvider
+     */
+    public function testResizeToMaxSideJPEGSuccess(array $source , array $target){
+        $image = $this->createImage($source[0], $source[1], 'jpeg');
+        $thumbnail = new ThumbnailSo($image);
+        $thumbnail->resizeToMaxSide(150);
+
+        $this->assertEquals($target[0], $thumbnail->getDestinationWidth());
+        $this->assertEquals($target[1], $thumbnail->getDestinationHeight());
+
+    }
+
+
+
+    
 }
