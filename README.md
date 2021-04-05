@@ -178,6 +178,13 @@ $img->save('dropbox', 'example', 'cat');
 
 ```
 
+## Demo App - framework Silex
+
+https://github.com/Magnum34/silex-thumbnail-so-example
+
+## TODO
+
+1. More unit tests.
 
 ## License
 
