@@ -182,6 +182,7 @@ https://github.com/Magnum34/silex-thumbnail-so-example
 ## TODO
 
 1. More unit tests.
+2. Docs Thumbnail So API .
 
 ## License
 
