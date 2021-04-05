@@ -16,6 +16,7 @@ Default is Local storage, AWS S3.
 * [Setup](#setup)
 * [Methods](#methods)
 * [Save Local Storage](#save-local-storage)
+* [Save AWS S3](#save-aws-s3)
 * [Extension new providers](#extension-new-providers)
 
 ## Requirements
@@ -51,7 +52,7 @@ $img->save('local', 'example', 'image');
 
 ```
 
-## Save AWS S3 - ResizeToMaxSide
+## Save AWS S3
 
 
 ```
