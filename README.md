@@ -92,6 +92,7 @@ php composer require kunalvarma05/dropbox-php-sdk
 ```
 
 2. Create Driver for Dropbox. 
+
 DropboxDriver.php
 ```php
 
@@ -122,7 +123,7 @@ class DropboxDriver implements DriverManagerInterface {
         return [
             'client_id' => $_ENV['DROPBOX_CLIENT_ID'],
             'client_secret' => $_ENV['DROPBOX_CLIENT_SECRET'],
-            "token" => $_ENV['DROPBOX_ACCESS_TOKEN']
+            'token' => $_ENV['DROPBOX_ACCESS_TOKEN']
         ];
 
     }
@@ -134,7 +135,7 @@ class DropboxDriver implements DriverManagerInterface {
             $app = new DropboxApp($config['client_id'], $config['client_secret'],$config['token']);
             $dropbox = new Dropbox($app);
             $dropboxFile = new DropboxFile($source_image);
-            $dropbox->simpleUpload($dropboxFile , "/$destination_dir/{$destination_name}.{$extension}", ['autorename' => true]);
+            $dropbox->simpleUpload($dropboxFile , "/{$destination_dir}/{$destination_name}.{$extension}", ['autorename' => true]);
            
         }catch(\Exception $exc){
             throw new ThumbnailSoException($exc->getMessage());
