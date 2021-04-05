@@ -5,10 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-
-Thumbnail So is a PHP image manipulation library  for resize to max side for jpeg and png.
-Expandable to different file storage providers e.g Dropbox.
-Default is Local storage, AWS S3.
+Thumbnail So is a PHP image manipulation library  resize (scale) to max side for jpeg and png. Expandable to different file storage providers e.g Dropbox. Default is Local storage, AWS S3.
 
 ## Getting started
 
