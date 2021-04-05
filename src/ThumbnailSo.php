@@ -7,7 +7,8 @@ use \ThumbnailSo\Exceptions\ThumbnailSoException;
 use \ThumbnailSo\RegisterDriver;
 use \ThumbnailSo\Drivers\LocalDriver;
 
-class ThumbnailSo {
+class ThumbnailSo
+{
 
 
     protected $source_width;
@@ -34,10 +35,11 @@ class ThumbnailSo {
      * @param string $filename
      * @return void
      */
-    private function imageInfo(string $filename){
+    private function imageInfo(string $filename)
+    {
         $info = getimagesize($filename);
 
-        if(!$info){
+        if (!$info) {
             throw new ThumbnailSoException('Could not read file');
         }
 
@@ -45,7 +47,7 @@ class ThumbnailSo {
         $this->source_height = $info[1];
         $this->source_type = $info[2];
 
-        switch($this->source_type){
+        switch ($this->source_type) {
             case IMAGETYPE_PNG:
                 $this->source_image = imagecreatefrompng($filename);
                 break;
@@ -64,7 +66,8 @@ class ThumbnailSo {
      *
      * @return void
      */
-    private function initDrivers(){
+    private function initDrivers()
+    {
         $this->drivers = RegisterDriver::allKeys();
     }
 
@@ -75,11 +78,11 @@ class ThumbnailSo {
      */
     public function __construct(string $filename)
     {
-        if(empty($filename) || !is_file($filename)){
+        if (empty($filename) || !is_file($filename)) {
             throw new ThumbnailSoException('File does not exists');
         }
         $fileinfo = finfo_open(FILEINFO_MIME_TYPE);
-        if(strstr(finfo_file($fileinfo, $filename), 'image') === false){
+        if (strstr(finfo_file($fileinfo, $filename), 'image') === false) {
             throw new ThumbnailSoException('Unsupported file type');
         }
         $this->imageInfo($filename);
@@ -88,10 +91,9 @@ class ThumbnailSo {
         RegisterDriver::set($local->getName(), $local);
 
         $aws = new AWSDriver();
-        RegisterDriver::set($aws->getName(),$aws);
+        RegisterDriver::set($aws->getName(), $aws);
 
         $this->initDrivers();
-       
     }
 
     /**
@@ -102,7 +104,8 @@ class ThumbnailSo {
      * 
      * @return this
      */
-    public function resize(int $width, int $height){
+    public function resize(int $width, int $height)
+    {
 
         $this->destination_width = $width;
         $this->destination_height = $height;
@@ -115,19 +118,20 @@ class ThumbnailSo {
      * @param integer $max
      * @return void
      */
-    public function resizeToMaxSide(int $max){
+    public function resizeToMaxSide(int $max)
+    {
 
-        if($max == 0){
+        if ($max == 0) {
             throw new ThumbnailSoException("Can't be zero");
         }
 
-        if($this->getSourceHeight() <= $max && $this->getSourceHeight() <= $max){
+        if ($this->getSourceHeight() <= $max && $this->getSourceHeight() <= $max) {
             return $this;
         }
 
-        if($this->getSourceHeight() > $this->getSourceWidth()){
+        if ($this->getSourceHeight() > $this->getSourceWidth()) {
             $ratio = $this->getSourceHeight() / $max;
-        }else{
+        } else {
             $ratio = $this->getSourceWidth() / $max;
         }
 
@@ -147,9 +151,10 @@ class ThumbnailSo {
      * @param string $destination_dir
      * @return void
      */
-    public function save(string $driver, string $destination_dir, string $destination_name){
+    public function save(string $driver, string $destination_dir, string $destination_name)
+    {
 
-        switch($this->source_type){
+        switch ($this->source_type) {
             case IMAGETYPE_PNG:
                 $dest_image = imagecreatetruecolor($this->getDestinationWidth(), $this->getDestinationHeight());
                 imagealphablending($dest_image, false);
@@ -182,19 +187,18 @@ class ThumbnailSo {
 
         $this->tmp_dir  = tempnam(sys_get_temp_dir(), '');
 
-        switch($this->source_type){
+        switch ($this->source_type) {
             case IMAGETYPE_PNG:
-                imagepng($dest_image, $this->getTmpDir() , 0);
+                imagepng($dest_image, $this->getTmpDir(), 0);
                 $extension = 'png';
                 break;
             case IMAGETYPE_JPEG:
-                imagejpeg($dest_image,$this->getTmpDir(), $this->getQuality());
+                imagejpeg($dest_image, $this->getTmpDir(), $this->getQuality());
                 $extension = 'jpeg';
                 break;
-
         }
 
-        if(!in_array($driver,$this->drivers)){
+        if (!in_array($driver, $this->drivers)) {
             throw new ThumbnailSoException('Invalid driver name');
         }
 
@@ -204,7 +208,6 @@ class ThumbnailSo {
         imagedestroy($dest_image);
 
         return $this;
-
     }
 
     /**
@@ -212,7 +215,8 @@ class ThumbnailSo {
      *
      * @return integer
      */
-    public function getSourceWidth(): int{
+    public function getSourceWidth(): int
+    {
         return $this->source_width;
     }
 
@@ -221,7 +225,8 @@ class ThumbnailSo {
      *
      * @return integer
      */
-    public function getSourceHeight(): int {
+    public function getSourceHeight(): int
+    {
         return $this->source_height;
     }
 
@@ -230,7 +235,8 @@ class ThumbnailSo {
      *
      * @return integer
      */
-    public function getDestinationWidth(): int {
+    public function getDestinationWidth(): int
+    {
         return $this->destination_width;
     }
 
@@ -239,7 +245,8 @@ class ThumbnailSo {
      *
      * @return integer
      */
-    public function getDestinationHeight(): int {
+    public function getDestinationHeight(): int
+    {
         return $this->destination_height;
     }
 
@@ -248,7 +255,8 @@ class ThumbnailSo {
      *
      * @return integer
      */
-    public function getQuality(): int {
+    public function getQuality(): int
+    {
         return $this->quality;
     }
 
@@ -257,7 +265,8 @@ class ThumbnailSo {
      *
      * @return integer
      */
-    public function getSourceType(){
+    public function getSourceType()
+    {
         return $this->source_type;
     }
 
@@ -266,9 +275,8 @@ class ThumbnailSo {
      *
      * @return string
      */
-    public function getTmpDir(): string{
+    public function getTmpDir(): string
+    {
         return $this->tmp_dir;
     }
-
-
 }

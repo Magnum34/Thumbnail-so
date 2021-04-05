@@ -2,9 +2,8 @@
 
 namespace ThumbnailSo;
 
-use \ThumbnailSo\RegisterDriver;
-
-interface  DriverManagerInterface {
+interface  DriverManagerInterface
+{
 
 
     /**
@@ -36,5 +35,5 @@ interface  DriverManagerInterface {
      * @param string $destination_dir
      * @return void
      */
-    public function afterSave(string $source_image,string $destination_dir, string $destination_name, string $extension);
+    public function afterSave(string $source_image, string $destination_dir, string $destination_name, string $extension);
 }
